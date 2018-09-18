@@ -58,7 +58,7 @@ class ImeSupportEventListener(sublime_plugin.EventListener):
 		cursor = view.sel()[0].a
 		pos = WindowLayout.calc_cursor_position(view, cursor)
 
-		print(pos)
+		# print(pos)
 		set_pos(window.hwnd(), pos)
 
 
