@@ -13,17 +13,23 @@ If you have the same problem and happen to have the same environment as me, mayb
 * Sublime Text Version 3.1.1, Build 3176 x64
 * Windows 8.1 64-bit
     - Chinese (Traditional) - Microsoft Bopomofo → OK
+      ![](img/cht-microsoft-bopomofo.png)
     - Japanese - Microsoft IME → OK
+      ![](img/jpn-microsoft-ime.png)
+    - Chinese (Simplified) - Microsoft Pinyin → basically OK (position may be wrong when started with `i`, `u`, or `v`)
+      ![](img/chs-microsoft-pinyin.png)
 
-## Screenshot
+<!-- ## Screenshot
 
-![](img/img1.png)
+![](img/img1.png) -->
 
 ## Known Issue
 
 * cursor 在 [widget (dialog)](http://docs.sublimetext.info/en/latest/reference/settings.html?highlight=is_widget#system-and-miscellaneous-settings) 裡的情況有時候定位不準。
 * 切換顯示或隱藏 Side Bar 的時候定位不準 — as mentioned by [zcodes](https://github.com/zcodes/IMESupport)。
 
-以上情況似乎都是讓 selection 更新 (例如隨便打個英文字) 就好了。目前沒去研究問題出在哪。
+以上情況似乎都是讓 selection 更新 (例如隨便打個英文字) 就好了。後者已知問題出在目前程式的 `set_pos` 進入點為 `on_selection_modified`，但 Toggle Side Bar 以後此事件不會被觸發，所以不會重新定位。前者還沒研究，但應該也是類似原因。
 
-* Chinese (Simplified) - Microsoft Pinyin 定位不準
+* Chinese (Simplified) - Microsoft Pinyin 開頭打 `i`, `u`, or `v` (也就是不成一個中文字的情況) 的話定位不准。
+
+The above condition does not trigger `WM_IME_NOTIFY` therefore `SetInlinePosition()` isn't called. 按 esc 再按 a 讓它觸發就好了。

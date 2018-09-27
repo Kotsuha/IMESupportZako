@@ -109,6 +109,7 @@ static LRESULT CALLBACK WindowMessageHookProc(HWND hWnd, UINT msg, WPARAM wParam
 	switch (msg) {
 	case WM_IME_STARTCOMPOSITION:
 	case WM_IME_COMPOSITION:
+	case WM_IME_NOTIFY:
 		if (x != INVALID_VALUE && y != INVALID_VALUE && font_height != INVALID_VALUE) {
 			SetInlinePosition(hWnd, x, y, font_height);
 		}
