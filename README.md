@@ -1,3 +1,5 @@
+請看：[https://github.com/zcodes/IMESupport](https://github.com/zcodes/IMESupport)
+
 # IMESupportZako
 
 Ever since I started to use [Origami](https://github.com/SublimeText/Origami) I found that [IMESupport](https://github.com/chikatoike/IMESupport) isn't working well with it. The IME composition window isn't displayed at correct position. This is a **personal repo where I try to fix it for myself**.
